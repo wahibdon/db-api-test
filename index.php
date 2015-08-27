@@ -4,6 +4,7 @@ use \Dropbox as dbx;
 if ($_FILES['SelectedFile']){
 	$tmp = $_FILES['SelectedFile']['tmp_name'];
 	$file = $_FILES['SelectedFile']['name'];
+	print_r($_POST);
 
 	$appInfo = dbx\AppInfo::loadFromJsonFile("app-info.json");
 	$accessToken = "PR7lZnGybKkAAAAAAAAXYa_wAj7RAns-RD6uHMTbsRP4BmKsgNtjeSUqrgc8BHJ6";
@@ -52,7 +53,7 @@ function upload(){
 	document.getElementsByClassName('progressBox')[0].style.opacity = "1";
 }
 window.addEventListener('load', function(){
-	document.getElementById('file').addEventListener('change', upload);
+	document.getElementById('submit').addEventListener('mouseup', upload);
 })
 </script>
 <style type="text/css">

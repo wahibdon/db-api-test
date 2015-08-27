@@ -15,7 +15,7 @@ if ($_FILES['SelectedFile']){
 	fclose($f);
 	print_r($result);
 	die();
-	$message = "A new file has been uploaded by $email and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients"
+	$message = "A new file has been uploaded by email and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients";
 }
 ?>
 <!DOCTYPE html>

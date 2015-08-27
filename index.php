@@ -14,12 +14,13 @@ if ($_FILES['SelectedFile']){
 	$result = $dbxClient->uploadFile("/$file", dbx\WriteMode::add(), $f);
 	fclose($f);
 	print_r($result);
-	$message = "A new file has been uploaded and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients{$result['path']} .\n
+	$filename = substr($result['path'], 1)
+	$message = "A new file has been uploaded and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients?preview=$filename} .\n
 	File information:\n
 	Name: {$_POST['first']} {$_POST['last']}\n
 	Email: {$_POST['email']}\n
 	Descrption: {$_POST['description']}";
-	mail('whibdon@ottcom.com', 'New File on Dropbox', $message, "From: 'Ottcom Uploads' <noreply@ottcom.com>");
+	mail('whibdon@ottcom.com', 'New File on Dropbox', $message, "From: Ottcom Uploads <noreply@ottcom.com>");
 	die();
 }
 ?>

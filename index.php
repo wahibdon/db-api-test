@@ -14,6 +14,8 @@ if ($_FILES['SelectedFile']){
 	$result = $dbxClient->uploadFile("/$file", dbx\WriteMode::add(), $f);
 	fclose($f);
 	print_r($result);
+	die();
+	$message = "A new file has been uploaded by $email and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients"
 }
 ?>
 <!DOCTYPE html>
@@ -27,6 +29,10 @@ function upload(){
 		return;
 	var data=new FormData();
 	data.append("SelectedFile", file.files[0]);
+	data.append("first", document.getELementById('first').value);
+	data.append("last", document.getELementById('last').value);
+	data.append("email", document.getELementById('email').value);
+	data.append("description", document.getELementById('description').value);
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function(){
 		if(request.readyState == 4){
@@ -56,14 +62,7 @@ window.addEventListener('load', function(){
 	padding: 0;
 }
 body{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: 62px 0;
-	line-height: 1.38;
-	font-family: 'Open Sans';
+	font-family: 'Arial';
 	background-color: #eee;
 }
 #uploadBox{
@@ -127,10 +126,15 @@ footer{
 </head>
 <body>
 	<div id="uploadBox">
+		<input type="text" placeholder="First Name" id="first">
+		<input type="text" placeholder="Last Name" id="last">
+		<input type="email" placeholder="Email Address" id="email">
+		<textarea placeholder="File Description" id="description"></textarea>
 		<div id="syntheticButton">
 			Select File
 			<input id="file" type="file" name="file" />
 		</div>
+		<button id="submit">Upload File</button>
 		<div class="progressBox">
 			<p class="fileName">&nbsp;</p>
 			<div class="progressBar"></div>

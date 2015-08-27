@@ -14,7 +14,7 @@ if ($_FILES['SelectedFile']){
 	$result = $dbxClient->uploadFile("/$file", dbx\WriteMode::add(), $f);
 	fclose($f);
 	print_r($result);
-	$filename = substr($result['path'], 1)
+	$filename = substr($result['path'], 1);
 	$message = "A new file has been uploaded and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients?preview=$filename} .\n
 	File information:\n
 	Name: {$_POST['first']} {$_POST['last']}\n

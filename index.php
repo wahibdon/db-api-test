@@ -15,12 +15,12 @@ if ($_FILES['SelectedFile']){
 	fclose($f);
 	print_r($result);
 	$filename = substr($result['path'], 1);
-	$message = "A new file has been uploaded and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients?preview=$filename} .\n
+	$message = "A new file has been uploaded and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients?preview=$filename .\n
 	File information:\n
 	Name: {$_POST['first']} {$_POST['last']}\n
 	Email: {$_POST['email']}\n
 	Descrption: {$_POST['description']}";
-	mail('whibdon@ottcom.com', 'New File on Dropbox', $message, "From: Ottcom Uploads <noreply@ottcom.com>");
+	mail('Carole Phillips <cphillips@ottcom.com>, Taylor Cummings <tcummings@ottcom.com>, Katie Price <kprice@ottcom.com>', 'New File on Dropbox', $message, "From: Ottcom Uploads <noreply@ottcom.com>");
 	die();
 }
 ?>

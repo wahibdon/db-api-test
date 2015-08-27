@@ -38,6 +38,10 @@ function upload(){
 	request.onreadystatechange = function(){
 		if(request.readyState == 4){
 			document.getElementsByClassName('progressBox')[0].style.opacity = "0";
+			var formElements = document.getElementsByClassName('form');
+			for(var i=0; i<formElements.length; i++)
+				formElements[i].value = "";
+			document.getElementById('filename').innerHTML = "";
 		}
 	}
 	request.upload.addEventListener('progress', function(e){
@@ -54,6 +58,9 @@ function upload(){
 }
 window.addEventListener('load', function(){
 	document.getElementById('submit').addEventListener('mouseup', upload);
+	document.getElementById('file').addEventListener('change', function(){
+		document.getElementById('filename').innerHTML = this.files[0].name;
+	});
 })
 </script>
 <style type="text/css">
@@ -127,14 +134,15 @@ footer{
 </head>
 <body>
 	<div id="uploadBox">
-		<input type="text" placeholder="First Name" id="first">
-		<input type="text" placeholder="Last Name" id="last">
-		<input type="email" placeholder="Email Address" id="email">
-		<textarea placeholder="File Description" id="description"></textarea>
+		<input class="form" type="text" placeholder="First Name" id="first">
+		<input class="form" type="text" placeholder="Last Name" id="last">
+		<input class="form" type="email" placeholder="Email Address" id="email">
+		<textarea class="form" placeholder="File Description" id="description"></textarea>
 		<div id="syntheticButton">
 			Select File
-			<input id="file" type="file" name="file" />
+			<input class="form" id="file" type="file" name="file" />
 		</div>
+		<p id="filename"></p>
 		<button id="submit">Upload File</button>
 		<div class="progressBox">
 			<p class="fileName">&nbsp;</p>

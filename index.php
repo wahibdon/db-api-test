@@ -4,8 +4,7 @@ use \Dropbox as dbx;
 if ($_FILES['SelectedFile']){
 	$tmp = $_FILES['SelectedFile']['tmp_name'];
 	$file = $_FILES['SelectedFile']['name'];
-	print_r($_POST);
-
+	
 	$appInfo = dbx\AppInfo::loadFromJsonFile("app-info.json");
 	$accessToken = "PR7lZnGybKkAAAAAAAAXYa_wAj7RAns-RD6uHMTbsRP4BmKsgNtjeSUqrgc8BHJ6";
 
@@ -15,8 +14,14 @@ if ($_FILES['SelectedFile']){
 	$result = $dbxClient->uploadFile("/$file", dbx\WriteMode::add(), $f);
 	fclose($f);
 	print_r($result);
+	$message = "A new file has been uploaded and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients/$file .\n
+	File information:\n
+	Name: {$_POST['first']} {$_POST['last']}\n
+	Email: {$_POST['email']}\n
+	Descrption: {$_POST['description']}
+	";
+	mail('whibdon@ottcom.com', 'New File on Dropbox', $message);
 	die();
-	$message = "A new file has been uploaded by email and can be viewed at https://www.dropbox.com/home/Apps/Ott%20Clients";
 }
 ?>
 <!DOCTYPE html>
@@ -101,6 +106,10 @@ input[type=text]{
 	width: 200px;
 	display: block;
 	float: left;
+}
+input[type=text]:first-child {
+    width: 190px;
+    margin-right: 10px;
 }
 input[type=email], textarea{
 	width: 100%;

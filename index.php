@@ -7,7 +7,8 @@ $accessToken = "PR7lZnGybKkAAAAAAAAXYa_wAj7RAns-RD6uHMTbsRP4BmKsgNtjeSUqrgc8BHJ6
 $dbxClient = new dbx\Client($accessToken, "PHP-Example/1.0");
 
 try {
-	$f = fopen("app-info.jso", "r");
+	if(fopen("app-info.jso", "r")===false)
+		echo "no";
 	try {
 		$result = $dbxClient->uploadFile("/working-draft.txt", dbx\WriteMode::add(), $f);
 		fclose($f);

@@ -93,6 +93,22 @@ body{
 	background-image: linear-gradient(rgba(255, 255, 255, 0.247059) 0%, rgba(0, 0, 0, 0) 50.476190476190474%, rgba(0, 0, 0, 0.2) 100%);
 	margin: 0 auto 10px;
 }
+input, textarea {
+	box-sizing: border-box;
+	border: 1px solid #999;
+}
+input[type=text]{
+	width: 200px;
+	display: block;
+	float: left;
+}
+input[type=email], textarea{
+	width: 100%;
+	display: block;
+}
+textarea {
+	height: 50px;
+}
 #syntheticButton input {
 	position: absolute;
 	top: 0;

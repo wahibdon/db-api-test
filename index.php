@@ -101,6 +101,7 @@ body{
 input, textarea {
 	box-sizing: border-box;
 	border: 1px solid #999;
+	margin-bottom: 10px;
 }
 input[type=text]{
 	width: 200px;

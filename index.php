@@ -30,10 +30,10 @@ function upload(){
 		return;
 	var data=new FormData();
 	data.append("SelectedFile", file.files[0]);
-	data.append("first", document.getELementById('first').value);
-	data.append("last", document.getELementById('last').value);
-	data.append("email", document.getELementById('email').value);
-	data.append("description", document.getELementById('description').value);
+	data.append("first", document.getElementById('first').value);
+	data.append("last", document.getElementById('last').value);
+	data.append("email", document.getElementById('email').value);
+	data.append("description", document.getElementById('description').value);
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function(){
 		if(request.readyState == 4){

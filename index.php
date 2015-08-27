@@ -9,8 +9,8 @@ $dbxClient = new dbx\Client($accessToken, "PHP-Example/1.0");
 $f = fopen("app-info.jso", "rb");
 try {
 	$result = $dbxClient->uploadFile("/working-draft.txt", dbx\WriteMode::add(), $f);
+	fclose($f);
 }catch (Exception $e){
 	$result = "failed";
 }
-fclose($f);
 print_r($result);

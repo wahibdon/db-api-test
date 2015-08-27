@@ -1,10 +1,10 @@
 <?
+require_once('lib/Dropbox/autoload.php');
+use \Dropbox as dbx;
 if ($_FILES['SelectedFile']){
 	$tmp = $_FILES['SelectedFile']['tmp_name'];
 	$file = $_FILES['SelectedFile']['name'];
 
-	require_once('lib/Dropbox/autoload.php');
-	use \Dropbox as dbx;
 	$appInfo = dbx\AppInfo::loadFromJsonFile("app-info.json");
 	$accessToken = "PR7lZnGybKkAAAAAAAAXYa_wAj7RAns-RD6uHMTbsRP4BmKsgNtjeSUqrgc8BHJ6";
 
